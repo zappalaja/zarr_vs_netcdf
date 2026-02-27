@@ -149,6 +149,6 @@ for nc in nc_files:
 df = pd.DataFrame(rows)
 df.to_csv(csv_out, index=False)
 
-print(f"\nWrote: {csv_out.resolve()}")
+print(f"\nWrote: {csv_out.resolve()}") # Add more context in near future??
 print(df)
 PY
