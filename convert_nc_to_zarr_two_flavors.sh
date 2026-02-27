@@ -34,11 +34,11 @@ var_name = sys.argv[3]
 
 zarr_out.mkdir(parents=True, exist_ok=True)
 
-# Two flavors of chunking
+# Two flavors of chunking ("optimiszing" for plotting vs for timeseires use cases)
 CHUNK_MAP = {"time": 1, "lat": 90, "lon": 144}
 CHUNK_TS  = {"time": 120, "lat": 30, "lon": 32}
 
-# Zarr v2-compatible compressor (works once you pin zarr<3)
+#Zarr-v2-compatible compressor ??
 compressor = Blosc(cname="zstd", clevel=3, shuffle=Blosc.SHUFFLE)
 encoding = {var_name: {"compressor": compressor}}
 
@@ -52,7 +52,7 @@ nc_files = sorted(nc_dir.glob("*.nc"))
 if not nc_files:
     raise SystemExit(f"No .nc files found in {nc_dir}")
 
-# Silence the “specified chunks separate stored chunks” warning (expected here)
+# Silence the “specified chunks separate stored chunks” warning
 warnings.filterwarnings(
     "ignore",
     message="The specified chunks separate the stored chunks",
@@ -66,8 +66,7 @@ for nc_file in nc_files:
 
     print(f"\n=== {nc_file.name} ===")
 
-    # Open WITHOUT chunks to avoid chunk-splitting warnings at open time,
-    # then rechunk in dask before writing.
+    # Open without chunks to avoid chunk-splitting warnings upon opening the file, then rechunk in dask before writing.
     ds0 = xr.open_dataset(nc_file, engine="netcdf4")[[var_name]]
 
     print("Writing:", z_map)
