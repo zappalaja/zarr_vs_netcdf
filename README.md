@@ -5,8 +5,6 @@
   - Single-time global map reads
   - Full time-series point extraction
 
-### Benchmarks common access patterns.
-
 ### Writes timing results to CSV.
 
 
