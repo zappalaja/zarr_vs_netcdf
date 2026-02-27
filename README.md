@@ -1,4 +1,4 @@
-# zarr_vs_netcdf
+# zarr_vs_netcdf - Intended to be a prototype repository
 ## Comparing load and render speeds of netcdf  and zarr using xarray and SPEAR med output.
 
 ### Converts NetCDF files into two Zarr layouts optimized for:
