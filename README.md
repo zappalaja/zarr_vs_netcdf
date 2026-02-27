@@ -31,6 +31,14 @@ This creates:
 - __map.zarr (map-optimized chunking)
 - __ts.zarr (time-series-optimized chunking)
 
+### Chunking Strategy
+
+| Layout | Chunking                              | Optimized For    |
+| ------ | ------------------------------------- | ---------------- |
+| Map    | `{"time": 1, "lat": 90, "lon": 144}`  | Fast map slice   |
+| TS     | `{"time": 120, "lat": 30, "lon": 32}` | Fast time series |
+
+
 ### 2. Run Benchmark
 
 ```bash
