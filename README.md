@@ -10,8 +10,8 @@
 
 ## Structure
 ```bash
-netcdf/                               # Input NetCDF files
-zarr/                                 # Generated Zarr stores
+netcdf/                               # Input directory NetCDF files, can be symbolic links
+zarr/                                 # Output directory generated Zarr stores
 convert_nc_to_zarr_two_flavors.sh     # Conversion script
 benchmark_nc_vs_zarr.sh               # Benchmark script
 results.csv                           # Sample output
